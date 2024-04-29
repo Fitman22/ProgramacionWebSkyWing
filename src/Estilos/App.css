@@ -1,103 +1,11 @@
-.App {
-  text-align: center;
-}
-body{
-  background-color: #a4aac5;
-}
-header {
-  background-color: #f2f2f2;
-  padding-top: 10px;
-}
-
-.redesSociales{
-  margin-bottom: 4px;
-}
-
-.redesSociales a{
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
-.logo img{
-  height: 100%;
-  width: 20%;
-  margin-bottom: 0;
-}
-
-.logo{
-  background-color: #151825;
-  margin: 0px;
-}
-
-nav ul {
-  list-style-type: none;
-  background-color: #067fac;
-  margin: 0;
-  padding: 10px;
-  display: flex;
-  justify-content: space-around;
-}
-
-nav ul li {
-  display: inline;
-  margin-right: 10px;
-}
-
-nav ul li a{
-  text-decoration: none;
+footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+  }
+.nave{
   color: white;
-  font-family: 'Times New Roman', Times, serif;
-}
-
-nav ul li a:hover{
-  color: black;
-}
-
-.image {
-  overflow-x: auto;
-  margin-top: 0px;
-  background-image: url('../img/avion-3.jpg');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  
-}
-
-.image h3{
-  margin-top: 30px;
-  font-size:xx-large;
-  color: #f2f2f2;
-
-}
-
-.image p{
-  font-size: x-large;
-  color: white;
-  margin-bottom: 250px;
-  padding-left: 25%;
-  padding-right: 25%;
-  text-align:center;
-}
-
-.content {
-  justify-content: center;
-}
-
-
-
-.grid-container {
-  display: grid;
-  grid-template-rows: auto auto; 
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 10px; 
-  margin: 10px;
-}
-.grid-item {
   display: flex;
-  padding: 20px;
-  text-align: center;
 }
-
 footer {
   background-color: #333;
   color: #fff;

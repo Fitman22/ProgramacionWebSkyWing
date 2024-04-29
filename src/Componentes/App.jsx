@@ -1,53 +1,58 @@
-import React from 'react';
-import '../Estilos/App.css';
-import logo from '../img/logo.png';
-import Faceboock from '../img/facebook.png';
-import Twitter from '../img/twitter.png';
-import Linkedin from '../img/linkedin.png';
-import Instagram from '../img/instagram.png';
-import calendario from '../img/calendario.png';
-import contacto from '../img/contacto.png';
-import mascota from '../img/mascotas.png'
+//import React, { useRef, useEffect } from 'react';
+import ReactDOMServer from 'react-dom/server'; // Importa ReactDOMServer
+import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
+import '../estilos/App.css';
+import logo from '../img/logo2.png';
+import Carouselhome from './carousel';
+import Contacto from './contacto';
 
-function App() {
+
+const App = () => {
+  const iframeContent = ReactDOMServer.renderToStaticMarkup(<Carouselhome iframe />);
   return (
-    <div className="App">
-      <header>
-        {/* Encabezados */}
-        <div className='redesSociales'>
-          <a href="#"><img src={Faceboock} alt="" /></a>
-          <a href="#"><img src={Twitter} alt="" /></a>
-          <a href="#"><img src={Linkedin} alt="" /></a>
-          <a href="#"><img src={Instagram} alt="" /></a>
-        </div>
-        <div  className="logo"><img src={logo} alt="no" /></div>
-        {/* Menú de navegación horizontal */}
-        <nav>
-          <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Vuelos</a></li>
-            <li><a href="#">Reservas</a></li>
-            <li><a href="#">Contacto</a></li>
-          </ul>
-        </nav>
-      </header>
-      {/* Imagen con desplazamiento horizontal */}
-      <div className="image">
-        <h3>VIAJES REGIONALES</h3>
-        <p>Ayudamos a las personas a ahorrar tiempo, mejorar su vida, ejerciendo la comunicación, tanto en los negocios como en la vida privada.</p>
-      </div>
-      {/* Contenido de 3 columnas por 2 filas */}
-      <h1>Tips - Usuario</h1>
-      <div class="grid-container">
-        <div class="grid-item"><img src={calendario} alt="" /> <p>Puedes agendar tus vuelos llenando nuestros fomularios.</p></div>
-        <div class="grid-item"><img src={contacto} alt="" /> <p>Nuestros asesores siempre estarán pendientes a tus solicitudes. </p></div>
-        <div class="grid-item"><img src={mascota} alt="" /> <p>Recuerda siempre contar con la documentación de tus mascotas.</p></div>
-      </div>
-      {/* pie de pagina*/}
-    <footer>
-    <p>&copy; 2024 SkyWing | Diseñado por <a href="#">G05_SkyWing</a></p>
-    </footer>
-    </div>
+    <>
+      <Navbar bg="dark" >
+        <Container >
+          <Navbar.Brand>
+            <img
+              src={logo} // Ruta de tu logo
+              height="50"
+              className="d-inline-block align-top"
+              alt="Logo"
+            />
+          </Navbar.Brand>
+          <Nav class='nave'>
+            <Nav.Link href="#LOGIN">Login</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+      <Container fluid>
+        <Row>
+          <Col sm={2}>
+            <Nav defaultActiveKey="/home" className="flex-column" style={{height:'500px'}}>
+              <Nav.Link href="/home">Inicio</Nav.Link>
+              <Nav.Link eventKey="link-1">Vuelos</Nav.Link>
+              <Nav.Link eventKey="link-2">Reservas</Nav.Link>
+              <Nav.Link eventKey="link-3">Contacto</Nav.Link>
+            </Nav>
+          </Col>
+          <Col sm={10}>
+            <div >
+              <iframe style={{ width: '100%', height: '500px' }}
+                title="iframe"
+                width="100%"
+                height="500px"
+                frameBorder="0"
+                srcDoc={`<!DOCTYPE html><html><head><style>* { box-sizing: border-box;} body { margin: 0; }</style></head><body>${iframeContent}</body></html>`}
+              ></iframe>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <footer style={{ textAlign: 'center', marginTop: '20px' }}>
+        <p>&copy; 2024 SkyWing | Diseñado por <a href="#">G05_SkyWing</a></p>
+      </footer>
+    </>
   );
 }
 
