@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../Estilos/Reserva.css';
 
 function Reservas() {
-  // Destinos predefinidos
+ 
   const destinosPredefinidos = [
     { id: 1, nombre: 'Nueva York' },
     { id: 2, nombre: 'París' },
@@ -14,9 +14,10 @@ function Reservas() {
   const [origen, setOrigen] = useState('');
   const [destino, setDestino] = useState('');
   const [fecha, setFecha] = useState('');
-  const [pasajeros, setPasajeros] = useState(1); // Número de pasajeros
-  const [clase, setClase] = useState('economica'); // Clase de vuelo
-  const [extras, setExtras] = useState([]); // Extras seleccionados
+  const [pasajeros, setPasajeros] = useState(1); 
+  const [clase, setClase] = useState('economica');
+  const [extras, setExtras] = useState([]); 
+  const [error, setError] = useState('Por favor complete todos los campos.');
 
   const handleExtrasChange = (e) => {
     const { value, checked } = e.target;
@@ -26,30 +27,47 @@ function Reservas() {
       setExtras(extras.filter(extra => extra !== value));
     }
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes implementar la lógica para enviar los datos de la reserva
+
+    if (!origen || !destino || !fecha || !pasajeros || !clase) {
+      alert(error);
+      return;
+    }
+    
     console.log("Origen:", origen);
     console.log("Destino:", destino);
     console.log("Fecha:", fecha);
     console.log("Pasajeros:", pasajeros);
     console.log("Clase:", clase);
     console.log("Extras:", extras);
-  };
 
+    const message = `¡Reserva realizada con éxito!\n
+      Origen: ${origen}\n
+      Destino: ${destino}\n
+      Fecha: ${fecha}\n
+      Pasajeros: ${pasajeros}\n
+      Clase: ${clase}\n
+      Extras: ${extras.join(', ')}`;
+    alert(message);
+
+    setError('');
+  };
   return (
-    <div>
+     <div className="reserva-container">
       <h2>Reserva de vuelos</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="reserva-form" onSubmit={handleSubmit}>
         <div>
           <label>Origen:</label>
-          <input
-            type="text"
+          <select
             value={origen}
             onChange={(e) => setOrigen(e.target.value)}
-            placeholder="Ingrese origen"
-          />
+          >
+            <option value="">Seleccione Origen</option>
+            {destinosPredefinidos.map(origen => (
+              <option key={origen.id} value={origen.nombre}>{origen.nombre}</option>
+            ))}
+          </select>
         </div>
         <div>
           <label>Destino:</label>
@@ -135,3 +153,4 @@ function Reservas() {
 }
 
 export default Reservas;
+
