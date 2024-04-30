@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Modal, Button } from 'react-bootstrap';
 import '../Estilos/App.css';
-import Carousel from './Carrusel';
-import Reserva from './Reserva'; 
-import Contacto from './contacto';
-
+import Carousel from './Carrusel.jsx';
+import Contacto from './Contacto.jsx';
+import Reserva from './Reserva.jsx'; 
+import Vuelos from './Vuelos.jsx';
 function App() {
   const [currentPage, setCurrentPage] = useState('carousel');
   const [loggedIn, setLoggedIn] = useState(false);
@@ -40,9 +40,10 @@ function App() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link id='nav' target="#" onClick={() => handleNavLinkClick('carousel')}>Inicio</Nav.Link>
-            {loggedIn && <Nav.Link href="#" onClick={() => handleNavLinkClick('Reserva')}>Reserva</Nav.Link>}
+            <Nav.Link id='nav' target="#" onClick={() => handleNavLinkClick('carousel')}>Inicio</Nav.Link>    
             <Nav.Link href="#" onClick={() => handleNavLinkClick('contacto')}>Contacto</Nav.Link>
+            <Nav.Link href="#" onClick={() => handleNavLinkClick('Vuelos')}>Vuelos</Nav.Link>
+            {loggedIn && <Nav.Link href="#" onClick={() => handleNavLinkClick('Reserva')}>Reserva</Nav.Link>}
             {!loggedIn&& <Nav.Link href="#" onClick={() => setShowModal(true)}>Login</Nav.Link>}
           </Nav>
           {loggedIn && <Button variant="outline-primary" onClick={handleLogout}>Cerrar sesión</Button>}
@@ -52,6 +53,7 @@ function App() {
         {currentPage === 'carousel' && <Carousel />}
         {currentPage === 'Reserva' && <Reserva />}
         {currentPage === 'contacto' && <Contacto />}
+        {currentPage === 'Vuelos' && <Vuelos />}
       </div>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>

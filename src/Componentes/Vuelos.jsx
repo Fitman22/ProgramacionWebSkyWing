@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Estilos/App.css';
+import '../Estilos/Vuelos.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';

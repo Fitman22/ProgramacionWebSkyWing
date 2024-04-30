@@ -3,7 +3,7 @@
 }
 
 body{
-  background-color: #a4aac5;
+  background: linear-gradient(to bottom, #061b42, #2e5375); 
 }
 
 h1 {
@@ -22,10 +22,6 @@ h2 {
   width:100vw;
   height:100vh;
   margin-top: 0px;
-  background-image: url('../img/fondovuelos.jpg');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .image p{

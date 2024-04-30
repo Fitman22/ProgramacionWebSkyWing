@@ -30,7 +30,7 @@ function Contacto() {
                             <Card.Title style={{ textAlign: "center", color: "white", fontSize: "25px" }}><b>Brandon David Jaimes Castro - 2211859</b></Card.Title>
                             <Card.Text style={{ textAlign: "center", color: "white" }}>
                                 <i>
-                                    Realizó la parte de registros de vuelo, dónde implementó diversos tipos de elementos, funciones, estilos y etiquetas.</i>
+                                    Realizó la parte de registros de vuelo, dónde implementó diversos tipos de elementos, funciones, estilos y etiquetas ademas tambien implemento el login.</i>
                             </Card.Text>
                         </Card.Body>
                     </Card>
