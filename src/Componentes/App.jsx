@@ -5,6 +5,10 @@ import Carousel from './Carrusel.jsx';
 import Contacto from './contacto.jsx';
 import Reserva from './Reserva.jsx'; 
 import Vuelos from './Vuelos.jsx';
+import facebook from '../img/facebook.png';
+import twitter from '../img/twitter.png';
+import instagram from '../img/instagram.png';
+import linkedin from '../img/linkedin.png';
 function App() {
   const [currentPage, setCurrentPage] = useState('carousel');
   const [loggedIn, setLoggedIn] = useState(false);
@@ -35,20 +39,54 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#" onClick={() => handleNavLinkClick('carousel')}>SkyWing</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link id='nav' target="#" onClick={() => handleNavLinkClick('carousel')}>Inicio</Nav.Link>    
-            <Nav.Link href="#" onClick={() => handleNavLinkClick('contacto')}>Contacto</Nav.Link>
-            <Nav.Link href="#" onClick={() => handleNavLinkClick('Vuelos')}>Vuelos</Nav.Link>
-            {loggedIn && <Nav.Link href="#" onClick={() => handleNavLinkClick('Reserva')}>Reserva</Nav.Link>}
-            {!loggedIn&& <Nav.Link href="#" onClick={() => setShowModal(true)}>Login</Nav.Link>}
-          </Nav>
-          {loggedIn && <Button variant="outline-primary" onClick={handleLogout}>Cerrar sesión</Button>}
-        </Navbar.Collapse>
-      </Navbar>
+       <Navbar bg="light" expand="lg" id="mi-navbar">
+      <Navbar.Brand id="navTittle"href="#" onClick={() => handleNavLinkClick('carousel')}>
+       <div className="brand" >Sky</div> <div className="brand" >Wing</div> 
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link id='nav'  onClick={() => handleNavLinkClick('carousel')}>
+            Inicio
+          </Nav.Link>
+          <Nav.Link id='nav' onClick={() => handleNavLinkClick('contacto')}>
+            Contacto
+          </Nav.Link>
+          <Nav.Link id='nav' onClick={() => handleNavLinkClick('Vuelos')}>
+            Vuelos
+          </Nav.Link>
+          {loggedIn && (
+            <Nav.Link id='nav' onClick={() => handleNavLinkClick('Reserva')}>
+              Reserva
+            </Nav.Link>
+          )}
+          {!loggedIn && (
+            <Nav.Link  onClick={() => setShowModal(true)}>
+              Login
+            </Nav.Link>
+          )}
+        </Nav>
+        {loggedIn && (
+          <Button variant="outline-primary" onClick={handleLogout}>
+            Cerrar sesión
+          </Button>
+        )}
+        <div className="social-icons">
+          <a href="https://www.facebook.com/">
+            <img src={facebook} alt="Facebook" />
+          </a>
+          <a href="https://twitter.com/">
+            <img src={twitter} alt="Twitter" />
+          </a>
+          <a href="https://www.instagram.com/">
+            <img src={instagram} alt="Instagram" />
+          </a>
+          <a href="https://www.linkedin.com/">
+            <img src={linkedin} alt="LinkedIn" />
+          </a>
+        </div>
+      </Navbar.Collapse>
+    </Navbar>
       <div className="iframe-content" style={{ maxHeight: '100vh', overflowY: 'scroll' }}>
         {currentPage === 'carousel' && <Carousel />}
         {currentPage === 'Reserva' && <Reserva />}
