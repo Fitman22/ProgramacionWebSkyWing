@@ -1,6 +1,11 @@
 # Proyecto SkyWing
 Proyecto sobre Aereolinea Comercial realizada en REACT.
 
+## Colaboradores Proyecto (100% - Participativos )
+Nelson Ivan Alvarez Suarez – 2215002 ||
+ Jonathan Philippe Parra Duran – 2224509 ||
+ Leider Joanny Esteban Lozano – 2215003  ||
+ Brandon David Jaimes Castro – 2211859 ||
 
 ## Instrucciones para Correcta Ejecución
 
