@@ -9,13 +9,19 @@ import facebook from '../img/facebook.png';
 import twitter from '../img/twitter.png';
 import instagram from '../img/instagram.png';
 import linkedin from '../img/linkedin.png';
+
 function App() {
   const [currentPage, setCurrentPage] = useState('carousel');
   const [loggedIn, setLoggedIn] = useState(false);
   const [error, setError] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [username, setUsername] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
+  
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };
   const handleNavLinkClick = (page) => {
     setCurrentPage(page);
   };
@@ -111,16 +117,27 @@ function App() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Contraseña:</label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              
-            </div>
+      <label htmlFor="password">Contraseña:</label>
+      <div className="input-group">
+        <input
+          type={showPassword ? 'text' : 'password'}
+          className="form-control"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <div className="input-group-append">
+          <button
+            className="btn btn-outline-secondary"
+            type="button"
+            onClick={togglePasswordVisibility}
+          >
+            {showPassword ? 'Ocultar' : 'Mostrar'}
+          </button>
+        </div>
+      </div>
+    </div>
+    
           </form>
         </Modal.Body>
         <Modal.Footer>
@@ -135,5 +152,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
