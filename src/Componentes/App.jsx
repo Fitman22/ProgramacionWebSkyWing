@@ -36,11 +36,11 @@ function App() {
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#">Mi Sitio</Navbar.Brand>
+        <Navbar.Brand href="#" onClick={() => handleNavLinkClick('carousel')}>SkyWing</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link target="#" onClick={() => handleNavLinkClick('carousel')}>Inicio</Nav.Link>
+            <Nav.Link id='nav' target="#" onClick={() => handleNavLinkClick('carousel')}>Inicio</Nav.Link>
             {loggedIn && <Nav.Link href="#" onClick={() => handleNavLinkClick('Reserva')}>Reserva</Nav.Link>}
             <Nav.Link href="#" onClick={() => handleNavLinkClick('contacto')}>Contacto</Nav.Link>
             {!loggedIn&& <Nav.Link href="#" onClick={() => setShowModal(true)}>Login</Nav.Link>}
