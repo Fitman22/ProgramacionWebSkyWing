@@ -1,59 +1,52 @@
-//import React, { useRef, useEffect } from 'react';
-import ReactDOMServer from 'react-dom/server'; // Importa ReactDOMServer
-import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
-import '../estilos/App.css';
-import logo from '../img/logo2.png';
-import Carouselhome from './carousel';
-import Contacto from './contacto';
+import React, { useState } from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
+import '../Estilos/App.css';
+import Carousel from './carousel.jsx';
+import Reserva from './Reserva'; 
+import Contacto from './contacto.jsx';
+function App() {
+  const [currentPage, setCurrentPage] = useState(''); // Estado para la página actual
 
+  // Función para actualizar la página actual
+  const handleNavLinkClick = (page) => {
+    setCurrentPage(page);
+  };
 
-const App = () => {
-  const iframeContent = ReactDOMServer.renderToStaticMarkup(<Carouselhome iframe />);
+  // Función para renderizar la página actual
+  const renderCurrentPage = () => {
+    switch (currentPage) {
+      case 'Reserva':
+        return <Reserva />;
+      case 'carousel':
+        // Aquí puedes agregar la lógica para otras páginas si es necesario
+        return <Carousel />;
+        case 'contacto':
+          // Aquí puedes agregar la lógica para otras páginas si es necesario
+          return <Contacto />;
+      default:
+        return <div>Inicio</div>;
+    }
+  };
+
   return (
-    <>
-      <Navbar bg="dark" >
-        <Container >
-          <Navbar.Brand>
-            <img
-              src={logo} // Ruta de tu logo
-              height="50"
-              className="d-inline-block align-top"
-              alt="Logo"
-            />
-          </Navbar.Brand>
-          <Nav class='nave'>
-            <Nav.Link href="#LOGIN">Login</Nav.Link>
+    <div className="App">
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#">Mi Sitio</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link target="#" onClick={() => handleNavLinkClick('carousel')}>Inicio</Nav.Link>
+            <Nav.Link href="#" onClick={() => handleNavLinkClick('Reserva')}>Reserva</Nav.Link>
+            <Nav.Link href="#" onClick={() => handleNavLinkClick('contacto')}>contacto</Nav.Link>
           </Nav>
-        </Container>
+        </Navbar.Collapse>
       </Navbar>
-      <Container fluid>
-        <Row>
-          <Col sm={2}>
-            <Nav defaultActiveKey="/home" className="flex-column" style={{height:'500px'}}>
-              <Nav.Link href="/home">Inicio</Nav.Link>
-              <Nav.Link eventKey="link-1">Vuelos</Nav.Link>
-              <Nav.Link eventKey="link-2">Reservas</Nav.Link>
-              <Nav.Link eventKey="link-3">Contacto</Nav.Link>
-            </Nav>
-          </Col>
-          <Col sm={10}>
-            <div >
-              <iframe style={{ width: '100%', height: '500px' }}
-                title="iframe"
-                width="100%"
-                height="500px"
-                frameBorder="0"
-                srcDoc={`<!DOCTYPE html><html><head><style>* { box-sizing: border-box;} body { margin: 0; }</style></head><body>${iframeContent}</body></html>`}
-              ></iframe>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-      <footer style={{ textAlign: 'center', marginTop: '20px' }}>
-        <p>&copy; 2024 SkyWing | Diseñado por <a href="#">G05_SkyWing</a></p>
-      </footer>
-    </>
+      <div className="iframe-content">
+        {renderCurrentPage()}
+      </div>
+    </div>
   );
 }
 
 export default App;
+

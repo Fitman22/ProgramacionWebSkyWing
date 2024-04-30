@@ -6,7 +6,7 @@ import landscape from '../img/lanscape.jpg'
 import calendario from '../img/calendario.png';
 import contacto from '../img/contacto.png';
 import mascota from '../img/mascotas.png'
-import '../estilos/carrusel.css'
+import '../Estilos/carrusel.css'
 function Carouselhome() {
   return (
     <Carousel>
