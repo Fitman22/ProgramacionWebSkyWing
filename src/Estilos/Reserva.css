@@ -14,7 +14,7 @@ label {
   font-weight: bold;
 }
 
-input[type='text'],
+
 input[type='date'] {
   width: 10%;
   padding: 10px;

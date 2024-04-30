@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Modal, Button } from 'react-bootstrap';
 import '../Estilos/App.css';
-import Carousel from './Carrusel.jsx';
+import Carousel from './Carrusel';
 import Reserva from './Reserva'; 
-import Contacto from './contacto.jsx';
+import Contacto from './contacto';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('');
@@ -30,6 +30,7 @@ function App() {
     setLoggedIn(false);
     setUsername('');
     setPassword('');
+    handleNavLinkClick('carousel')
   };
 
   return (
@@ -78,6 +79,7 @@ function App() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              
             </div>
           </form>
         </Modal.Body>
