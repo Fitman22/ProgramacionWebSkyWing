@@ -3,12 +3,13 @@ import { Navbar, Nav, Modal, Button } from 'react-bootstrap';
 import '../Estilos/App.css';
 import Carousel from './Carrusel.jsx';
 import Contacto from './contacto.jsx';
-import Reserva from './Reserva.jsx'; 
+import Reserva from './Reserva.jsx';  
 import Vuelos from './Vuelos.jsx';
 import facebook from '../img/facebook.png';
 import twitter from '../img/twitter.png';
 import instagram from '../img/instagram.png';
 import linkedin from '../img/linkedin.png';
+import Footer from './footer.jsx';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('carousel');
@@ -44,6 +45,7 @@ function App() {
   };
 
   return (
+    <>
     <div className="App">
        <Navbar bg="light" expand="lg" id="mi-navbar">
       <Navbar.Brand id="navTittle"href="#" onClick={() => handleNavLinkClick('carousel')}>
@@ -91,14 +93,20 @@ function App() {
             <img src={linkedin} alt="LinkedIn" />
           </a>
         </div>
+        
       </Navbar.Collapse>
     </Navbar>
+   
       <div className="iframe-content" style={{ maxHeight: '100vh', overflowY: 'scroll' }}>
         {currentPage === 'carousel' && <Carousel />}
         {currentPage === 'Reserva' && <Reserva />}
         {currentPage === 'contacto' && <Contacto />}
         {currentPage === 'Vuelos' && <Vuelos />}
+        {<Footer />}
       </div>
+
+     
+
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Iniciar Sesión</Modal.Title>
@@ -150,6 +158,9 @@ function App() {
         </Modal.Footer>
       </Modal>
     </div>
+   
+   </>
+    
   );
 }
 export default App;
