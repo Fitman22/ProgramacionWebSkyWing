@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, Modal, Button } from 'react-bootstrap';
 import '../Estilos/App.css';
 import Carousel from './Carrusel.jsx';
-import Contacto from './Contacto.jsx';
+import Contacto from './contacto.jsx';
 import Reserva from './Reserva.jsx'; 
 import Vuelos from './Vuelos.jsx';
 function App() {
