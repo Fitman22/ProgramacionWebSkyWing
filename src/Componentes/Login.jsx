@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Modal, Button } from 'react-bootstrap';
 import '../Estilos/App.css';
-import Carousel from './Carrusel.jsx';
-import Reserva from './Reserva'; 
-import Contacto from './contacto.jsx';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
-  const [error, setError] = useState('');
-  const [showModal, setShowModal] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const handleNavLinkClick = (page) => {
-    setCurrentPage(page);
-  };
+  const [error, setError] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const handleLogin = () => {
+    // Aquí deberías hacer la lógica para verificar el usuario y contraseña.
+    // Por simplicidad, lo he omitido en este ejemplo.
+    // Si el usuario y la contraseña son correctos, establece loggedIn en true.
     if (username === 'usuario' && password === 'contraseña') {
       setLoggedIn(true);
       setError('');
@@ -27,6 +23,8 @@ function App() {
   };
 
   const handleLogout = () => {
+    // Esta función se llama cuando el usuario hace clic en "Cerrar sesión".
+    // Aquí puedes realizar cualquier limpieza necesaria y establecer loggedIn en false.
     setLoggedIn(false);
     setUsername('');
     setPassword('');
@@ -39,19 +37,20 @@ function App() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link target="#" onClick={() => handleNavLinkClick('carousel')}>Inicio</Nav.Link>
-            {loggedIn && <Nav.Link href="#" onClick={() => handleNavLinkClick('Reserva')}>Reserva</Nav.Link>}
-            <Nav.Link href="#" onClick={() => handleNavLinkClick('contacto')}>Contacto</Nav.Link>
-            {!loggedIn&& <Nav.Link href="#" onClick={() => setShowModal(true)}>Login</Nav.Link>}
+            <Nav.Link href="#">Inicio</Nav.Link>
+            <Nav.Link href="#">Otra Página</Nav.Link>
           </Nav>
-          {loggedIn && <Button variant="outline-primary" onClick={handleLogout}>Cerrar sesión</Button>}
+          {loggedIn ? (
+            <Nav>
+              <Nav.Link onClick={handleLogout}>Cerrar sesión</Nav.Link>
+            </Nav>
+          ) : (
+            <Button variant="primary" onClick={() => setShowModal(true)}>
+              Iniciar Sesión
+            </Button>
+          )}
         </Navbar.Collapse>
       </Navbar>
-      <div className="iframe-content" style={{ maxHeight: '100vh', overflowY: 'scroll' }}>
-        {currentPage === 'carousel' && <Carousel />}
-        {currentPage === 'Reserva' && <Reserva />}
-        {currentPage === 'contacto' && <Contacto />}
-      </div>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Iniciar Sesión</Modal.Title>
