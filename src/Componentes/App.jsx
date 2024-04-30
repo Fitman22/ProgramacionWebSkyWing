@@ -6,7 +6,7 @@ import Reserva from './Reserva';
 import Contacto from './contacto';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('');
+  const [currentPage, setCurrentPage] = useState('carousel');
   const [loggedIn, setLoggedIn] = useState(false);
   const [error, setError] = useState('');
   const [showModal, setShowModal] = useState(false);
