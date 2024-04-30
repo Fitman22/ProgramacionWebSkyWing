@@ -5,23 +5,20 @@ import Carousel from './carousel.jsx';
 import Reserva from './Reserva'; 
 import Contacto from './contacto.jsx';
 function App() {
-  const [currentPage, setCurrentPage] = useState(''); // Estado para la página actual
+  const [currentPage, setCurrentPage] = useState('');
 
-  // Función para actualizar la página actual
+  
   const handleNavLinkClick = (page) => {
     setCurrentPage(page);
   };
 
-  // Función para renderizar la página actual
   const renderCurrentPage = () => {
     switch (currentPage) {
       case 'Reserva':
         return <Reserva />;
-      case 'carousel':
-        // Aquí puedes agregar la lógica para otras páginas si es necesario
+      case 'carousel': 
         return <Carousel />;
         case 'contacto':
-          // Aquí puedes agregar la lógica para otras páginas si es necesario
           return <Contacto />;
       default:
         return <div>Inicio</div>;
@@ -41,7 +38,7 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <div className="iframe-content">
+      <div className="iframe-content" style={{ maxHeight: '100vh', overflowY: 'scroll' }}>
         {renderCurrentPage()}
       </div>
     </div>
